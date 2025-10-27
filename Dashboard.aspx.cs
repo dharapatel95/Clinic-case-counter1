@@ -21,7 +21,7 @@ namespace WebApplication2
                 // Greetings
                 string username = Session["Username"].ToString();
                 string shift = Session["Shift"]?.ToString() ?? "Day";
-                lblUserInfo.Text = $"Jay Shree Krishna! Welcome, {username} – {shift} Shift";
+                lblUserInfo.Text = $" Welcome, {username} – {shift} Shift";
 
                 // Load counts
                 lblNewCasesCount.Text = $"New Cases Today: {GetTodayNewCaseCount()}/40";
