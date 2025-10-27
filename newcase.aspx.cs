@@ -50,7 +50,7 @@ namespace WebApplication2
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            // ✅ Always auto-assign doctor & fee before saving
+            //  Always auto-assign doctor & fee before saving
             AssignDoctorAndFee();
 
             if (string.IsNullOrEmpty(txtDoctor.Text))
@@ -66,7 +66,7 @@ namespace WebApplication2
             {
                 con.Open();
 
-                // 1️⃣ Check if patient already exists
+                //  Check if patient already exists
                 string getPatient = "SELECT PatientID FROM Patients WHERE Name=@Name AND Mobile=@Mobile";
                 SqlCommand cmdPatient = new SqlCommand(getPatient, con);
                 cmdPatient.Parameters.AddWithValue("@Name", txtName.Text.Trim());
@@ -80,7 +80,7 @@ namespace WebApplication2
                     patientID = pidObj.ToString();
                     txtPatientID.Text = patientID;
 
-                    // 2️⃣ Check if same disease already exists
+                    //  Check if same disease already exists
                     string checkCase = "SELECT COUNT(*) FROM PatientCases WHERE PatientID=@PID AND Disease=@Disease";
                     SqlCommand cmdCase = new SqlCommand(checkCase, con);
                     cmdCase.Parameters.AddWithValue("@PID", patientID);
@@ -90,13 +90,13 @@ namespace WebApplication2
                     if (exists > 0)
                     {
                         lblMsg.ForeColor = System.Drawing.Color.Red;
-                        lblMsg.Text = "❌ This patient already has a case for this disease.";
+                        lblMsg.Text = " This patient already has a case for this disease.";
                         return;
                     }
                 }
                 else
                 {
-                    // 3️⃣ Insert new patient
+                    //  Insert new patient
                     patientID = Guid.NewGuid().ToString().Substring(0, 6).ToUpper();
                     txtPatientID.Text = patientID;
 
@@ -113,7 +113,7 @@ namespace WebApplication2
                     cmdInsert.ExecuteNonQuery();
                 }
 
-                // 4️⃣ Insert case with auto doctor + fee
+                //  Insert case with auto doctor + fee
                 string insertCase = @"INSERT INTO PatientCases (PatientID, Date, Disease, Medication, PaymentType, Fee, DoctorAssigned) 
                                       VALUES (@PID,@Date,@Disease,@Medication,@Payment,@Fee,@Doctor)";
                 SqlCommand cmdInsertCase = new SqlCommand(insertCase, con);
@@ -127,7 +127,7 @@ namespace WebApplication2
                 cmdInsertCase.ExecuteNonQuery();
 
                 lblMsg.ForeColor = System.Drawing.Color.Green;
-                lblMsg.Text = "✅ Case saved successfully!";
+                lblMsg.Text = " Case saved successfully!";
             }
         }
 
@@ -137,7 +137,7 @@ namespace WebApplication2
             if (string.IsNullOrEmpty(txtPatientID.Text))
             {
                 lblMsg.ForeColor = System.Drawing.Color.Red;
-                lblMsg.Text = "⚠ Select a patient first!";
+                lblMsg.Text = "Select a patient first!";
                 return;
             }
 
@@ -221,7 +221,7 @@ namespace WebApplication2
                             ClientScript.RegisterStartupScript(this.GetType(), "PrintNewCase", js, true);
 
                             lblMsg.ForeColor = System.Drawing.Color.Blue;
-                            lblMsg.Text = $"📜 Printing new case for Patient ID: {patientID}...";
+                            lblMsg.Text = $"Printing new case for Patient ID: {patientID}...";
                         }
                     }
                 }
