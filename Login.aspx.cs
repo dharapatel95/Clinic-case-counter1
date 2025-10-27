@@ -38,7 +38,7 @@ namespace WebApplication2
                 cmd.Parameters.AddWithValue("@Password", password);
 
                 SqlDataReader dr = cmd.ExecuteReader();
-                //Response.Write("🔍 Login query executed.<br>");
+                //Response.Write(" Login query executed.<br>");
 
                 if (dr.Read())
                 {
@@ -60,10 +60,10 @@ namespace WebApplication2
                 }
                 else
                 {
-                   // Response.Write("❌ No matching user found.<br>");
+                   // Response.Write(" No matching user found.<br>");
                    // Response.End();
 
-                    lblError.Text = "⚠ Invalid Username or Password!";
+                    lblError.Text = " Invalid Username or Password!";
                 }
             }
         }
