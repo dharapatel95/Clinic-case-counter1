@@ -49,14 +49,14 @@ namespace WebApplication2
                     gvCases.DataSource = dt;
                     gvCases.DataBind();
                     lblMsg.ForeColor = System.Drawing.Color.Green;
-                    lblMsg.Text = $"✅ Patient found: {txtSearchID.Text.Trim()}";
+                    lblMsg.Text = $" Patient found: {txtSearchID.Text.Trim()}";
                 }
                 else
                 {
                     gvCases.DataSource = null;
                     gvCases.DataBind();
                     lblMsg.ForeColor = System.Drawing.Color.Red;
-                    lblMsg.Text = "⚠ No patient found with this ID.";
+                    lblMsg.Text = " No patient found with this ID.";
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace WebApplication2
             if (string.IsNullOrEmpty(txtSearchID.Text))
             {
                 lblMsg.ForeColor = System.Drawing.Color.Red;
-                lblMsg.Text = "⚠ Select a patient first!";
+                lblMsg.Text = " Select a patient first!";
                 return;
             }
 
@@ -106,7 +106,7 @@ namespace WebApplication2
                         if (!dr.HasRows)
                         {
                             lblMsg.ForeColor = System.Drawing.Color.OrangeRed;
-                            lblMsg.Text = "⚠ No old medical history found for this patient.";
+                            lblMsg.Text = " No old medical history found for this patient.";
                             return;
                         }
 
@@ -143,7 +143,7 @@ namespace WebApplication2
 
                         ClientScript.RegisterStartupScript(this.GetType(), "PrintOldHistory", js, true);
                         lblMsg.ForeColor = System.Drawing.Color.Blue;
-                        lblMsg.Text = $"📜 Printing history for Patient ID: {patientID}...";
+                        lblMsg.Text = $" Printing history for Patient ID: {patientID}...";
                     }
                 }
             }
@@ -205,7 +205,7 @@ namespace WebApplication2
             gvCases.EditIndex = -1;
             BindGrid();
             lblMsg.ForeColor = System.Drawing.Color.Green;
-            lblMsg.Text = "✅ Old case updated successfully!";
+            lblMsg.Text = " Old case updated successfully!";
         }
 
 
@@ -222,7 +222,7 @@ namespace WebApplication2
             string patientID = gvCases.DataKeys[index].Values["PatientID"].ToString();
             txtSearchID.Text = patientID;
             lblMsg.ForeColor = System.Drawing.Color.Green;
-            lblMsg.Text = $"✅ Patient selected: {patientID}";
+            lblMsg.Text = $" Patient selected: {patientID}";
         }
     }
 }
