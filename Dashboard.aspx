@@ -84,10 +84,10 @@
     </div>
 
     <div class="buttons">
-    <button class="btn btn-new" onclick="loadPage('newcase.aspx')">📝 New Case</button>
-    <button class="btn btn-old" onclick="loadPage('oldcase.aspx')">📁 Old Case</button>
-    <button class="btn btn-new" onclick="loadPage('bookappointment.aspx')">📞 Book Appointment</button>
-    <button class="btn btn-old" onclick="loadPage('doctorwisecases.aspx')">👨‍⚕️ Today's Doctor Cases</button>
+    <button class="btn btn-new" onclick="loadPage('newcase.aspx')"> New Case</button>
+    <button class="btn btn-old" onclick="loadPage('oldcase.aspx')"> Old Case</button>
+    <button class="btn btn-new" onclick="loadPage('bookappointment.aspx')"> Book Appointment</button>
+    <button class="btn btn-old" onclick="loadPage('doctorwisecases.aspx')"> Today's Doctor Cases</button>
 </div>
 
 
